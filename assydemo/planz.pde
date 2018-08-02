@@ -16,10 +16,19 @@ void drawPlannz(){
   
 class Plant{
   PVector groundPos;
+  ArrayList<Branch> branches;
+  PVector growDirection;
   
   
   Plant(){
      groundPos = new PVector(100, 100, 0);
+     growDirection = new PVector(1, 0, 0);
+  }  
+  
+  void growPlant(){
+    for (Branch branch : branches){
+      branch.growBranch();   
+    }    
   }  
   
   
@@ -32,6 +41,26 @@ class Plant{
     popMatrix();
     
   }  
+  
+  
+}
+
+class Branch{
+  PVector startPos;
+  ArrayList<PVector> pointList;
+  PVector growDirection;
+  
+  Branch(PVector startPos, ArrayList<PVector> pointList, PVector growDirection){
+    this.startPos = startPos;
+    this.pointList = pointList;
+    this.growDirection = growDirection;
+  }  
+  
+  void growBranch(){
+    
+  }  
+  
+  
   
   
 }  

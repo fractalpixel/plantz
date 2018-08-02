@@ -24,7 +24,12 @@ class Plant{
   
   
   void drawPlant(){
-    
+    pushMatrix();
+    translate(groundPos.x, groundPos.y, groundPos.z);
+    noFill();
+    stroke(255);
+    sphere(5);
+    popMatrix();
     
   }  
   

@@ -25,7 +25,7 @@ class PlantPart {
   void doInit(RandomSequence random) {
   }
   
-  final void drawPart(PlantContext context, RandomSequence random) {
+  void drawPart(PlantContext context, RandomSequence random) {
   }
   
 

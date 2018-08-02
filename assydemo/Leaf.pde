@@ -7,29 +7,57 @@ class Leaf extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
+    int leafSegments = 25;
+    float leafLength = 20;
+    float leafWidth = 20;
     
+    float upTilt = 0.3;
+
+    fill(50,200,60);
     
-    //draw leaf
-    float leafstep = -10;
-    beginShape(POINTS);
-    fill(0,255,0);
-    for (int i = -100; i <=100; i = i+1){
-      leafstep = 0.01*i;
-      vertex(leafEquationX(leafstep)*10,leafEquationY(leafstep)*10,0);
-    } 
-    endShape(POINTS);
+    beginShape(TRIANGLES);
+    for (int i = 0; i < leafSegments; i++) {
+      float relPos = map(i, 0, leafSegments, 0f, 1f);
+      float nextRelPos = map(i + 1, 0, leafSegments, 0f, 1f);
+      
+      leafEdgePoint(relPos, 0.5*leafWidth, leafLength, upTilt);  
+      leafCenterPoint(relPos, leafLength);
+      leafCenterPoint(nextRelPos, leafLength);
+
+      leafCenterPoint(nextRelPos, leafLength);
+      leafEdgePoint(nextRelPos, 0.5*leafWidth, leafLength, upTilt);  
+      leafEdgePoint(relPos, 0.5*leafWidth, leafLength, upTilt);  
+      
+      leafCenterPoint(relPos, leafLength);
+      leafEdgePoint(relPos, -0.5*leafWidth, leafLength, upTilt);  
+      leafCenterPoint(nextRelPos, leafLength);
+
+      leafEdgePoint(nextRelPos, -0.5*leafWidth, leafLength, upTilt);  
+      leafCenterPoint(nextRelPos, leafLength);
+      leafEdgePoint(relPos, -0.5*leafWidth, leafLength, upTilt);  
+      
+    }
+    
+    endShape();
+
   }
   
-  
-  float leafEquationX(float t){
-    return sin(t)*cos(t)*(log(abs(t)+0.00001));
-   //x  =  sintcostln|t|  (3)
-     
-  }  
-  
-  float leafEquationY(float t){
-    //y  =  |t|^(0.3)(cost)^(1/2), 
-    //http://mathworld.wolfram.com/HeartCurve.html
-    return pow(abs(t), 0.3)*pow(cos(t),0.5);
+  void leafCenterPoint(float relPos, float leafLen) {
+      float y = mix(relPos, 0, leafLen);
+      vertex(0,y,0);
   }
+  
+  void leafEdgePoint(float relPos, float leafR, float leafLen, float upTilt) {
+       float cutoverPoint = 0.4;
+      float baseW = pow(mapClamp(relPos, 0, cutoverPoint, 0, 1), 0.5);
+      float tipW = 0.5*(1+cos(TURN*mapClamp(relPos, cutoverPoint, 1, 0, 1)*0.5));
+      float w = mix(relPos, baseW, tipW);
+      
+      float x = 0.5*leafR * w;
+      float z = 0 + upTilt * abs(leafR) * min(relPos, 1-relPos);
+      float y = mix(relPos, 0, leafLen);
+      
+      vertex(x,y,z);
+ }
+  
 }

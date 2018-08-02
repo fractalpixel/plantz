@@ -122,7 +122,7 @@ void draw() {
   worblePos += deltaTime*sunWorbleSpeed;  
 //  directionalLight(255, 255, 255, sin(worblePos)*sunWorbleAmount, 10, cos(worblePos)*sunWorbleAmount);
   fill(100, 200, 255);
-   lights();
+  lights();
 
   drawPlants(time);
   

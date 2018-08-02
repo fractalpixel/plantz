@@ -3,8 +3,8 @@ class Branch extends PlantPart {
   PlantPart branch = null;
   PVector endPos;
   int sideAmount = 12;
-  float brancHeight = 10;
-  float branchMaxWidth = 2;
+  float brancHeight = 12;
+  float branchMaxWidth = 1;
   float minWidth = 0.1;
   float branchChange = branchMaxWidth-minWidth;
   float maxOfset = 0.8;
@@ -14,6 +14,7 @@ class Branch extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
+    noStroke();
     drawBranch(context,random);
     
   }  
@@ -26,8 +27,8 @@ class Branch extends PlantPart {
     float prevOfsety = 0;
     for (int i = 1; i <= brancHeight; i += 1){
       float r =  (pow((((float)brancHeight-i)/brancHeight), 1.2)*(branchChange))+ minWidth;
-      xofset += (random.nextFloat(2*maxOfset)-maxOfset)*context.age;
-      yofset += (random.nextFloat(2*maxOfset)-maxOfset)*context.age;
+      xofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 2);
+      yofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 2);
       drawLayer(-(-1+i)*context.age, -i*context.age,prevR*context.age,r*context.age, prevOfsetx, prevOfsety,xofset, yofset );
       prevR = r;
       prevOfsetx = xofset;
@@ -55,6 +56,7 @@ class Branch extends PlantPart {
       float a = i*1/(sideAmount+0.001);
       float x = cos(2*PI*a)*r+ xofset;
       float z = sin(2*PI*a)*r + yofset;
+      
       vertex(x, y, z);     
   }
   

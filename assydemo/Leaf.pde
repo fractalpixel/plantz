@@ -11,18 +11,18 @@ class Leaf extends PlantPart {
     
     //draw leaf
     float leafstep = -10;
-    beginShape();
+    beginShape(POINTS);
     fill(0,255,0);
-    for (int i = -10; i <=10; i = i+1){
-      leafstep = 0.1*i;
-      vertex(leafEquationX(leafstep),leafEquationY(leafstep),0);
+    for (int i = -100; i <=100; i = i+1){
+      leafstep = 0.01*i;
+      vertex(leafEquationX(leafstep)*10,leafEquationY(leafstep)*10,0);
     } 
-    endShape();
+    endShape(POINTS);
   }
   
   
   float leafEquationX(float t){
-    return sin(t)*cos(t)*log(t);
+    return sin(t)*cos(t)*(log(abs(t)+0.00001));
    //x  =  sintcostln|t|  (3)
      
   }  

@@ -3,7 +3,7 @@
 Plant testPlant;
 
 void setupPlants(){
-  testPlant = new Plant(new PVector(0,0,0), 42, new CubePart());
+  testPlant = new Plant(new PVector(0,0,0), 42, new Leaf());
   
 } 
 

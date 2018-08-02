@@ -10,5 +10,10 @@ class CubePart extends PlantPart {
     translate(0, -size/2,0);
     box(size,size,size);
   }
+  
+  
+  void drawCylinder(){
+  
+  }
 
 }

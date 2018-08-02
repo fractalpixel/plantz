@@ -34,4 +34,20 @@ class Plant{
   }  
   
   
+}
+
+class Branch{
+  PVector startPos;
+  ArrayList<PVector> pointList;
+  PVector growDirection;
+  
+  Branch(PVector startPos, ArrayList<PVector> pointList, PVector growDirection){
+    this.startPos = startPos;
+    this.pointList = pointList;
+    this.growDirection = growDirection;
+  }  
+  
+  
+  
+  
 }  

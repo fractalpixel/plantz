@@ -1,0 +1,35 @@
+
+class Leaf extends PlantPart {
+  
+  
+  
+  void doInit(RandomSequence random) {
+  }
+  
+  void drawPart(PlantContext context, RandomSequence random) {
+    
+    
+    //draw leaf
+    float leafstep = -10;
+    beginShape();
+    fill(0,255,0);
+    for (int i = -10; i <=10; i = i+1){
+      leafstep = 0.1*i;
+      vertex(leafEquationX(leafstep),leafEquationY(leafstep),0);
+    } 
+    endShape();
+  }
+  
+  
+  float leafEquationX(float t){
+    return sin(t)*cos(t)*log(t);
+   //x  =  sintcostln|t|  (3)
+     
+  }  
+  
+  float leafEquationY(float t){
+    //y  =  |t|^(0.3)(cost)^(1/2), 
+    //http://mathworld.wolfram.com/HeartCurve.html
+    return pow(abs(t), 0.3)*pow(cos(t),0.5);
+  }
+}

@@ -30,8 +30,8 @@ int fps = 60;
 //QueasyCam cam;
 Camera camera;
 
-PVector camPos = new PVector();
-PVector focusPos = new PVector();
+PVector camPos = new PVector(20, -10, 10);
+PVector focusPos = new PVector(0,0,0);
 
 
 float sinNoise(float t, float x) {
@@ -74,7 +74,7 @@ void setup() {
 
 //  moonlander.start();
   
-  setupPlanz();
+  setupPlants();
 
 
   
@@ -85,7 +85,7 @@ void setup() {
 void draw() {
   background(0);
   fill(255);
-  resetShader();
+  //resetShader();
 
   
   // Handles communication with Rocket
@@ -101,6 +101,11 @@ void draw() {
   float time = millis() / 1000.0;
   float deltaTime = 1f / fps; 
 
+  
+  float cameraSpeed = 0.2;
+  camPos.x = 20 * cos(TURN*time*cameraSpeed);
+  camPos.z = 20 * sin(TURN*time*cameraSpeed);
+
   camera.jump(camPos.x, camPos.y, camPos.z);
   camera.aim(focusPos.x, focusPos.y, focusPos.z);
   camera.feed();
@@ -108,16 +113,19 @@ void draw() {
   // Debug lines
   noStroke();
  // stroke(0,255, 0);
+ 
+// resetShader();
 
     // Sunlight
   float sunWorbleAmount = 0.5f;//(float) moonlander.getValue("sunWorbleAmount");
   float sunWorbleSpeed = 0.5f;//(float) moonlander.getValue("sunWorbleSpeed");
-  worblePos += deltaTime*sunWorbleSpeed;
-  directionalLight(255, 255, 255, sin(worblePos)*sunWorbleAmount, 10, cos(worblePos)*sunWorbleAmount);
+  worblePos += deltaTime*sunWorbleSpeed;  
+//  directionalLight(255, 255, 255, sin(worblePos)*sunWorbleAmount, 10, cos(worblePos)*sunWorbleAmount);
   fill(100, 200, 255);
+   lights();
 
-  drawPlannz();
-
+  drawPlants(time);
+  
   noStroke();
 
 }

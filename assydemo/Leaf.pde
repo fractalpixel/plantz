@@ -11,8 +11,8 @@ class Leaf extends PlantPart {
   
   void drawPart(PlantContext context, RandomSequence random) {
     int leafSegments = 16;
-    float leafLength = 20;
-    float leafWidth = 20;
+    float leafLength = 2;
+    float leafWidth = 1.5;
     
     float upTilt = 0.3;
 

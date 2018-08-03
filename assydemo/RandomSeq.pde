@@ -62,6 +62,10 @@ class RandomSequence {
       return nextInt() % (maxInt - minInt) + minInt;
     }
     
+    int nextInt(int maxInt) {
+      return nextInt(0, maxInt);
+    }
+    
     float nextFloat() {
       return nextBits(24) / (float)(1 << 24);
     }
@@ -70,6 +74,10 @@ class RandomSequence {
         if (max < 0) throw new IllegalArgumentException("max should not be negative, but it was " + max);
 
         return nextFloat() * max;
+    }
+
+    float nextFloat(float min, float max) {
+      return min(min, max) + nextFloat(abs(max-min));
     }
 
 

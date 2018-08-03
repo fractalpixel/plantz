@@ -1,6 +1,6 @@
 class Ball extends PlantPart {
   
-  float size = 1f;
+  float size = 10f;
   color youngColor = #40A020;
   color oldColor = #A03060;
   

@@ -10,6 +10,9 @@ class PlantContext {
   }
   
   PlantContext(){
-     
+  }
+  
+  PlantContext copy() {
+    return new PlantContext(age);
   }
 }

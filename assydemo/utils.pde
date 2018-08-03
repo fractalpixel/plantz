@@ -6,9 +6,24 @@ double mix(double t, double a, double b) {
   return (b - a) * t + a;
 }
 
+float smoothMix(float t, float a, float b) {
+  float relPos = 0.5f*(1.0f+cos(map(t, 0, 1, PI, 2*PI)));
+  return mix(relPos, a, b);
+}
+
 float mapClamp(float value, float sourceStart, float sourceEnd, float destStart, float destEnd) {
   return map(constrain(value, sourceStart, sourceEnd), sourceStart, sourceEnd, destStart, destEnd);
   
+}
+
+float smoothMap(float value, float sourceStart, float sourceEnd, float destStart, float destEnd) {
+  float relPos = 0.5f*(1.0f+cos(map(value, sourceStart, sourceEnd, PI, 2*PI)));
+  return mix(relPos, destStart, destEnd);
+}
+
+float smoothMapClamp(float value, float sourceStart, float sourceEnd, float destStart, float destEnd) {
+  float relPos = 0.5f*(1.0f+cos(mapClamp(value, sourceStart, sourceEnd, PI, 2*PI)));
+  return mix(relPos, destStart, destEnd);
 }
 
 void normal(PVector n) {

@@ -80,7 +80,16 @@ class RandomSequence {
       return min(min, max) + nextFloat(abs(max-min));
     }
 
+    float nextGaussishFloat(float mean, float stdDev) {
+      return nextFloat(-1f, 1f) *
+             nextFloat(-1f, 1f) *
+             nextFloat(-1f, 1f) *
+             nextFloat(-1f, 1f) *
+             stdDev + mean;
+    }
 
+
+/*
     double nextGaussian() {
         if (haveExtraGaussian) {
             // Use earlier extra gaussian if available
@@ -122,10 +131,11 @@ class RandomSequence {
         return nextGaussian() * standardDeviation + mean;
     }
 
-
+*/
     double nextDouble() {
         return nextBits(53) / (double)(1L << 53);
     }
+
 
     private long nextBits(int numberOfBits) {
         return nextLong() >>> (64 - numberOfBits); // Use unsigned right shift, most significant bits will be zero

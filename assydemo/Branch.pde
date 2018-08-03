@@ -37,7 +37,7 @@ class Branch extends PlantPart {
     translate(branchEndPos.x, branchEndPos.y, branchEndPos.z);
     scale(-0.1*context.age);
     
-    tip.drawPart(context,random.nextRandom());
+    if (tip != null) tip.drawPart(context,random.nextRandom());
     popMatrix();
     
     
@@ -87,7 +87,7 @@ class Branch extends PlantPart {
           branchingAngle += PHI;
           
           // Rotate out from tree
-          rotateX((branchesInGrowDirection)*PI+random.nextGaussianFloat(0f, 0.1f));
+          rotateX((branchesInGrowDirection)*PI+random.nextGaussishFloat(0f, 0.4f));
           
           branchContext.age = mapClamp(context.age, 0.3, 1f, 0.2, 0.8) * (pow(branchToTop, 1.5));
           branch.drawPart(branchContext, random.nextRandom());

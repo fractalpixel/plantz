@@ -31,7 +31,7 @@ int fps = 60;
 Camera camera;
 
 PVector camPos = new PVector(20, -10, 10);
-PVector focusPos = new PVector(0,0,0);
+PVector focusPos = new PVector(0,-5,0);
 
 
 float sinNoise(float t, float x) {
@@ -105,6 +105,7 @@ void draw() {
   float cameraSpeed = 0.2;
   camPos.x = 20 * cos(TURN*time*cameraSpeed);
   camPos.z = 20 * sin(TURN*time*cameraSpeed);
+  camPos.y = -15;
 
   camera.jump(camPos.x, camPos.y, camPos.z);
   camera.aim(focusPos.x, focusPos.y, focusPos.z);

@@ -19,15 +19,23 @@ class Plant {
   }  
   
   void drawPlant(){
+    random.setSeed(seed);
+
     pushMatrix();
     translate(groundPos.x, groundPos.y, groundPos.z);
+    
+    rotateY(random.nextFloat(0, 2*PI));
+    
     noFill();
     stroke(255);
 
-    random.setSeed(seed);
     part.drawPart(context, random);
     
     popMatrix();
   }  
+  
+  void init(RandomSequence random) {
+    part.init(random);
+  }
    
 }

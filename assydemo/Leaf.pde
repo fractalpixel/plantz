@@ -4,7 +4,18 @@ class Leaf extends PlantPart {
   private PVector p1 = new PVector();
   private PVector p2 = new PVector();
   private PVector p3 = new PVector();
+  color leafCol = color(50,200,60);
   
+  
+  Leaf(){
+    
+  }
+  
+  
+  Leaf(color leafColor){
+    leafCol = leafColor;
+  }
+    
   
   void doInit(RandomSequence random) {
   }
@@ -16,7 +27,7 @@ class Leaf extends PlantPart {
     
     float upTilt = 0.3;
 
-    fill(50,200,60);  
+    fill(leafCol);  
     noStroke();
     
     beginShape(TRIANGLES);

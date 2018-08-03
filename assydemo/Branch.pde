@@ -3,7 +3,7 @@ class Branch extends PlantPart {
   PlantPart branch = null;
   PVector endPos;
   int sideAmount = 12;
-  float maxBrancHeight = 50;
+  float maxBrancHeight = 70;
   float branchMaxWidth = 0.8;
   float minWidth = 0.05;
   float branchChange = branchMaxWidth-minWidth;
@@ -12,9 +12,13 @@ class Branch extends PlantPart {
   int brancHeight = 0;
   float branchStep = 1;
   PVector branchEndPos = new PVector(0,0,0);
+ 
   
-  Branch(PlantPart tip){
-    this.tip = tip;  
+  
+  Branch(PlantPart tip, PlantPart branch){
+    this.tip = tip;
+    this.branch = branch;
+    
   }  
   
   void doInit(RandomSequence random) {
@@ -41,19 +45,39 @@ class Branch extends PlantPart {
     float prevOfsetx = 0;
     float prevOfsety = 0;
     float prevY  = 0;
-  
-    
-    for (int i = 1; i <= brancHeight; i += 1){
+    int numberOfBranches = 20;
+    int stepsBetweenBranch = (int)maxBrancHeight/numberOfBranches;
+    int stepsUntilNext = stepsBetweenBranch+((int)random.nextFloat(4));
+    for (int i = 1; i <= brancHeight; i += 1){     
       float branchToTop = ((float)(brancHeight-i)/brancHeight);
       float r =  context.age*(pow((((float)brancHeight-i)/brancHeight), 1.2)*(branchChange))*pow(branchToTop, 1.5)+ minWidth;
-      xofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 1)*branchToTop*branchToTop;
-      yofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 1)*branchToTop*branchToTop;
+      xofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 2)*branchToTop*branchToTop;
+      yofset += (random.nextFloat(2*maxOfset)-maxOfset)*pow(context.age, 2)*branchToTop*branchToTop;
       float ystep = branchStep*context.age*pow(branchToTop,2);
       float y = prevY-ystep;
       drawLayer(prevY, y,prevR*context.age,r*context.age, prevOfsetx, prevOfsety,xofset, yofset );
       prevR = r;
       prevOfsetx = xofset;
       prevOfsety = yofset;
+      if (stepsUntilNext ==0){
+          if (branch != null){
+            pushMatrix();
+            translate(branchEndPos.x, branchEndPos.y, branchEndPos.z);
+            scale(0.9);
+            rotateY(random.nextFloat(2*PI));
+            rotateX(0.5*PI+(random.nextFloat(1)-0.8));
+            
+            println(random.nextFloat(2*PI));
+            
+            branch.drawPart(new PlantContext(branchToTop),random.nextRandom());
+            stepsUntilNext = stepsBetweenBranch+((int)random.nextFloat(4))-2;
+            popMatrix();
+          }
+      }
+      
+      stepsUntilNext --;
+      
+      
       prevY = y;
       
     }  

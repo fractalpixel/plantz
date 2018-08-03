@@ -10,9 +10,9 @@ class Leaf extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
-    int leafSegments = 16;
-    float leafLength = 2;
-    float leafWidth = 1.5;
+    int leafSegments = 6;
+    float leafLength = 1;
+    float leafWidth = 0.5;
     
     float upTilt = 0.3;
 
@@ -52,7 +52,7 @@ class Leaf extends PlantPart {
   }
   
   void leafCenterPoint(float relPos, float leafLen, PVector pos) {
-      float y = mix(relPos, 0, leafLen);
+      float y = mix(relPos, 0, -leafLen);
       pos.x = 0;
       pos.y = y;
       pos.z = 0;
@@ -66,7 +66,7 @@ class Leaf extends PlantPart {
       
       float x = 0.5*leafR * w;
       float z = 0 + upTilt * abs(leafR) * sin(0.5*TURN*min(relPos, 1-relPos));
-      float y = mix(relPos, 0, leafLen);
+      float y = mix(relPos, 0, -leafLen);
       
       pos.x = x;
       pos.y = y;

@@ -54,8 +54,12 @@ class RandomSequence {
         return nextFloat() < probabilityForTrue;
     }
 
-    float nextInt() {
+    int nextInt() {
         return (int)(nextLong() >> 32); // Use signed right shift
+    }
+    
+    int nextInt(int minInt, int maxInt) {
+      return nextInt() % (maxInt - minInt) + minInt;
     }
     
     float nextFloat() {

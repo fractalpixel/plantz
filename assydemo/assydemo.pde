@@ -115,14 +115,23 @@ void draw() {
  // stroke(0,255, 0);
  
 // resetShader();
+  //lights();
 
-    // Sunlight
+  // Sunlight
   float sunWorbleAmount = 0.5f;//(float) moonlander.getValue("sunWorbleAmount");
   float sunWorbleSpeed = 0.5f;//(float) moonlander.getValue("sunWorbleSpeed");
   worblePos += deltaTime*sunWorbleSpeed;  
-//  directionalLight(255, 255, 255, sin(worblePos)*sunWorbleAmount, 10, cos(worblePos)*sunWorbleAmount);
-  fill(100, 200, 255);
-  lights();
+  directionalLight(255, 200, 50, sin(worblePos)*sunWorbleAmount, -1, cos(worblePos)*sunWorbleAmount);
+
+  // Skylight
+  directionalLight(20, 40, 140, 0,-1,0);
+  ambientLight(30,50,80);
+
+  // Doom Light
+   directionalLight(200, 50, 10, 0.2,0.1,0.1);
+
+  
+  fill(255, 255, 255);
 
   drawPlants(time);
   

@@ -17,7 +17,7 @@ class Branch extends PlantPart {
   
   
   Branch(PlantPart tip, PlantPart branch){
-    this(tip, branch, 0.4);
+    this(tip, branch, 0.3);
   }
   
   Branch(PlantPart tip, PlantPart branch, float branchesInGrowDirection){
@@ -45,7 +45,7 @@ class Branch extends PlantPart {
   void drawBranch(PlantContext context, RandomSequence random) {
     float xofset = 0;
     float yofset = 0;
-    brancHeight = (int) smoothMapClamp(context.age, 0f, 1f, 0f, maxBrancHeight);
+    brancHeight = (int) mapClamp(context.age, 0f, 0.5f, 0f, maxBrancHeight);
     float prevR = context.age*(pow(1, 1.2)*(branchChange))*(brancHeight/maxBrancHeight)+ minWidth;
     float prevOfsetx = 0;
     float prevOfsety = 0;
@@ -54,7 +54,7 @@ class Branch extends PlantPart {
     float branchingAngle = random.nextFloat(2*PI);
     final float PHI = 2.3999632f;
     
-    int numberOfBranches = 20;
+    int numberOfBranches = 10;
     
     PlantContext branchContext = context.copy();
     
@@ -86,9 +86,9 @@ class Branch extends PlantPart {
           branchingAngle += PHI;
           
           // Rotate out from tree
-          rotateX(branchesInGrowDirection*0.5*PI+random.nextGaussianFloat(0f, 0.1f));
+          rotateX((branchesInGrowDirection)*PI+random.nextGaussianFloat(0f, 0.1f));
           
-          branchContext.age = smoothMapClamp(context.age, 0.4, 1, 0.1, 0.85) * branchToTop;
+          branchContext.age = mapClamp(context.age, 0.3, 1f, 0.2, 0.8) * (pow(branchToTop, 1.5));
           branch.drawPart(branchContext, random.nextRandom());
           stepsUntilNext = stepsBetweenBranch + random.nextInt(0, 3);
           popMatrix();

@@ -11,11 +11,14 @@ class Branch extends PlantPart {
   color branchColor = color(222,184,135);
   int brancHeight = 0;
   float branchStep = 1;
-  PVector branchEndPos = new PVector(0,0,0);
+  PVector branchEnd = new PVector(0,0,0);
   
-  Branch(PlantPart tip){
-    this.tip = tip;  
-  }  
+  Branch(PlantPart tip, PlantPart branch){
+    this.tip = tip;
+    this.branch = branch;
+    
+  }   
+
   
   void doInit(RandomSequence random) {
   }
@@ -23,13 +26,12 @@ class Branch extends PlantPart {
   void drawPart(PlantContext context, RandomSequence random) {
     noStroke();
     drawBranch(context,random);
-    pushMatrix();
-    translate(branchEndPos.x, branchEndPos.y, branchEndPos.z);
-    scale(-0.1*context.age);
-    
-    tip.drawPart(context,random.nextRandom());
-    popMatrix();
-    
+    if (tip != null){
+      pushMatrix();
+      translate(branchEnd.x, branchEnd.y, branchEnd.z);
+      tip.drawPart(context,random.nextRandom());
+      popMatrix();
+    }  
     
   }  
   
@@ -79,12 +81,16 @@ class Branch extends PlantPart {
       float x = cos(2*PI*a)*r+ xofset;
       float z = sin(2*PI*a)*r + yofset;
       
-      vertex(x, y, z);     
-      branchEndPos.x = x;
-      branchEndPos.y = y;
-      branchEndPos.z = z;
-      
+      vertex(x, y, z);  
+      branchEnd.x = x;
+      branchEnd.y = y;
+      branchEnd.z = z;
   }
   
   
 }
+
+
+
+
+  

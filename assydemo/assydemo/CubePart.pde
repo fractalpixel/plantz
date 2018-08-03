@@ -5,7 +5,7 @@ class CubePart extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
-    float size =context.age+0.2;
+    float size = 1f + context.age * 10f;
     fill(200, 0, 70);
     translate(0, -size/2,0);
     box(size,size,size);

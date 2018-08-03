@@ -1,6 +1,7 @@
 class Branch extends PlantPart {
   PlantPart tip = null;
   PlantPart branch = null;
+  
   PVector endPos;
   int sideAmount = 12;
   float maxBrancHeight = 70;

@@ -5,12 +5,12 @@ Plant testPlant;
 void setupPlants(){
   testPlant = new Plant(new PVector(0,0,0), 42, 
                 new Branch(
-                   new Leaf(), 
+                   new Apple(), 
                    new Branch(
-                     new Leaf(), 
+                     new Apple(), 
                      new Branch(
-                       new Ball(), 
-                       new Leaf()))));
+                       new Apple(), 
+                       new Apple()))));
   
 } 
 

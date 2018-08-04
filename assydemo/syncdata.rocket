@@ -8,17 +8,30 @@ color="ffb27474">
 	</track>
 	<track name="camera:speed" folded="0" muteKeyCount="0"
 color="ffb28050">
-		<key row="0" value="1.000000" interpolation="0" />
+		<key row="0" value="0.100000" interpolation="0" />
+		<key row="904" value="0.100000" interpolation="2" />
+		<key row="1048" value="0.200000" interpolation="0" />
+		<key row="1416" value="0.050000" interpolation="2" />
+		<key row="1808" value="0.000000" interpolation="0" />
 	</track>
 	<track name="camera:distance" folded="0" muteKeyCount="0"
 color="ffa9b250">
 		<key row="0" value="20.000000" interpolation="2" />
-		<key row="88" value="3.000000" interpolation="0" />
+		<key row="88" value="3.000000" interpolation="2" />
+		<key row="168" value="10.000000" interpolation="0" />
+		<key row="904" value="10.000000" interpolation="2" />
+		<key row="1048" value="20.000000" interpolation="0" />
+		<key row="1416" value="10.000000" interpolation="2" />
+		<key row="1808" value="50.000000" interpolation="0" />
 	</track>
 	<track name="camera:height" folded="0" muteKeyCount="0"
 color="ff60b250">
 		<key row="0" value="-5.000000" interpolation="2" />
 		<key row="88" value="-15.000000" interpolation="2" />
+		<key row="248" value="-10.000000" interpolation="2" />
+		<key row="904" value="-10.000000" interpolation="2" />
+		<key row="1048" value="2.000000" interpolation="2" />
+		<key row="1416" value="-20.000000" interpolation="2" />
 	</track>
 	<track name="sun:worbleAmount" folded="0" muteKeyCount="0"
 color="ff4fb292">
@@ -26,11 +39,45 @@ color="ff4fb292">
 		<key row="49" value="0.100000" interpolation="2" />
 		<key row="136" value="10.000000" interpolation="2" />
 		<key row="392" value="10.000000" interpolation="0" />
+		<key row="1416" value="0.000000" interpolation="2" />
+		<key row="1808" value="-100.000000" interpolation="0" />
 	</track>
 	<track name="sun:worbleSpeed" folded="0" muteKeyCount="0"
 color="ff4f71b2">
 		<key row="0" value="0.010000" interpolation="2" />
-		<key row="32" value="0.200000" interpolation="0" />
+		<key row="32" value="0.200000" interpolation="2" />
+		<key row="1416" value="0.100000" interpolation="2" />
+		<key row="1808" value="0.000000" interpolation="0" />
+	</track>
+	<track name="plants:tree" folded="0" muteKeyCount="0"
+color="ff8850b2">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="640" value="0.000000" interpolation="2" />
+		<key row="1048" value="1.000000" interpolation="0" />
+	</track>
+	<track name="plants:singleGrass" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="0" value="0.000000" interpolation="2" />
+		<key row="88" value="0.200000" interpolation="2" />
+		<key row="120" value="1.000000" interpolation="0" />
+	</track>
+	<track name="plants:singleFlower" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="504" value="0.000000" interpolation="2" />
+		<key row="712" value="1.000000" interpolation="0" />
+	</track>
+	<track name="plants:grassPatch" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="248" value="0.000000" interpolation="2" />
+		<key row="480" value="1.000000" interpolation="0" />
+	</track>
+	<track name="plants:flowerPatch" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="704" value="0.000000" interpolation="2" />
+		<key row="981" value="1.000000" interpolation="0" />
 	</track>
 </tracks>
 	</rootElement>

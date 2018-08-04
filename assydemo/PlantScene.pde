@@ -17,13 +17,15 @@ void setupPlants(){
                        new Leaf(), 
                        new Leaf()))));
                         
-  testPlant2 = new Plant(new PVector(0,0,0), 42, 
+  /*testPlant2 = new Plant(new PVector(0,0,0), 42, 
                 new Flower(
                   new Leaf(color(50,50,200)),
            
                   new Leaf()
                 )
-              );
+              );*/
+              
+    testPlant2 = new Plant(new PVector(0,0,0), 42, new Grass());          
 
 
   for (int i = 0; i < 200; i++) {

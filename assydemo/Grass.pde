@@ -22,12 +22,14 @@ class Grass extends PlantPart {
       for (int i = 0; i < grassAmount; i  ++ ){
           
           pushMatrix();
-          translate((random.nextFloat()*random.nextFloat()*patchWidth)- (0.5*patchWidth),0,(random.nextFloat()*random.nextFloat()*patchWidth)- (0.5*patchWidth));
+          translate((random.nextFloat()*patchWidth)- (0.5*patchWidth),0,(random.nextFloat()*patchWidth)- (0.5*patchWidth));
           rotateX(PI-random.nextFloat(0.25));
-          drawLayer(0, stalkLength*context.age*0.5, 0.08, 0.05, 0, 0, 0,0 );
+          float stalkL = stalkLength*context.age*(random.nextFloat(0.5)+0.5);
+        
+          drawLayer(0, stalkL*0.5, 0.08, 0.05, 0, 0, 0,0 );
           
      
-          drawLayer(stalkLength*context.age*0.5, stalkLength*context.age, 0.05, 0.01, 0, 0, random.nextFloat(0.5)-0.25,0 );
+          drawLayer(stalkL*0.5, stalkL, 0.05, 0.01, 0, 0, random.nextFloat(0.5)-0.25,0 );
          
           popMatrix();
       

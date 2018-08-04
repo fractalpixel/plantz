@@ -3,10 +3,12 @@ ArrayList<Plant> flowers = new ArrayList<Plant>();
 float treeAge = 1;
 float singleGrassAge = 1;
 float singleFlowerAge = 1;
+float grassPatchAge = 1;
 
 Plant tree;
 Plant singleGrass;
 Plant singleFlower;
+Plant grassPatch;
 
 void setupPlants(){
   RandomSequence random = new RandomSequence(21348);
@@ -29,7 +31,7 @@ void setupPlants(){
                 )
               );
               
-   // testPlant2 = new Plant(new PVector(0,0,0), 42, new Grass());    
+   grassPatch = new Plant(new PVector(0,0,0), 42, new Grass(100, 30));    
     singleGrass = new Plant(new PVector(0,0,0), 42, new Grass(1, 0));          
 
 
@@ -57,11 +59,12 @@ void drawPlants(float time){
   tree.context.age = treeAge;
   singleGrass.context.age = singleGrassAge;
   singleFlower.context.age = singleFlowerAge;
+  grassPatch.context.age = grassPatchAge;
   //println(testPlant.context.age);
   
   tree.drawPlant(); 
   
-  
+  grassPatch.drawPlant();
   
   singleGrass.drawPlant(); 
   pushMatrix();

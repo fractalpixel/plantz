@@ -153,9 +153,9 @@ void draw() {
   singleGrassAge = (float) moonlander.getValue("plants:singleGrass");
   singleFlowerAge = (float) moonlander.getValue("plants:singleFlower");
 
-  float grassPatchAge = (float) moonlander.getValue("plants:grassPatch");
-  float flowerPatchAge = (float) moonlander.getValue("plants:flowerPatch");
-  
+  grassPatchAge = (float) moonlander.getValue("plants:grassPatch");
+  flowerPatchAge = (float) moonlander.getValue("plants:flowerPatch");
+
   
   fill(255, 255, 255);
 

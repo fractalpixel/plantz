@@ -2,23 +2,26 @@
 ArrayList<Plant> flowers = new ArrayList<Plant>();
 
 Plant testPlant;
+Plant testPlant2;
 
 void setupPlants(){
   RandomSequence random = new RandomSequence(21348);
   
- /* testPlant = new Plant(new PVector(0,0,0), 42, 
+ testPlant = new Plant(new PVector(0,0,0), 42, 
                 new Branch(
-                   new Apple(), 
+                   new Leaf(), 
                    new Branch(
-                     new Apple(), 
+                     new Leaf(), 
                      new Branch(
 
-                       new Apple(), 
-                       new Apple()))));
- */                        
-  testPlant = new Plant(new PVector(0,-10,0), 42, 
+                       new Leaf(), 
+                       new Leaf()))));
+                        
+  testPlant2 = new Plant(new PVector(0,0,0), 42, 
                 new Flower(
-                  new Leaf(color(50,50,200))
+                  new Leaf(color(50,50,200)),
+           
+                  new Leaf()
                 )
               );
 
@@ -34,13 +37,7 @@ void setupPlants(){
       sin(a) * r - cos(a) * r,
       h,
       sin(a) * r + cos(a) * r);
-      flowers.add(new Plant(pos, random.nextLong(), 
-        new Branch(
-          new Flower(
-            new Leaf(color(50,50,200))
-          ), 
-          new Leaf(), 20, 3, 10)        
-      ));
+  
   }
 
   for (Plant plant : flowers) {
@@ -50,16 +47,19 @@ void setupPlants(){
 
 
 void drawPlants(float time){
-  testPlant.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
+  //testPlant.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
+  testPlant2.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
   //println(testPlant.context.age);
   pushMatrix();
-  testPlant.drawPlant(); 
-  popMatrix();
+  //testPlant.drawPlant(); 
   
-  for (Plant plant : flowers) {
+  popMatrix();
+  testPlant2.drawPlant(); 
+  
+  /*or (Plant plant : flowers) {
     plant.context.age = (sin(TURN * time * 0.03) + 1.0) * 0.5;
     plant.drawPlant();
-  }
+  }*/
   
 }
   

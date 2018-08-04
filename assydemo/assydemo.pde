@@ -116,10 +116,12 @@ void draw() {
   float deltaTime = 1f / fps; 
 
   
-  float cameraSpeed = 0.2;
-  camPos.x = 20 * cos(TURN*time*cameraSpeed);
-  camPos.z = 20 * sin(TURN*time*cameraSpeed);
-  camPos.y = -15;
+  float cameraSpeed = (float)moonlander.getValue("camera:speed");
+  float cameraDistance = (float)moonlander.getValue("camera:distance");
+
+  camPos.x = cameraDistance * cos(TURN*time*cameraSpeed);
+  camPos.z = cameraDistance * sin(TURN*time*cameraSpeed);
+  camPos.y = (float)moonlander.getValue("camera:height");
 
   camera.jump(camPos.x, camPos.y, camPos.z);
   camera.aim(focusPos.x, focusPos.y, focusPos.z);
@@ -133,10 +135,10 @@ void draw() {
   //lights();
 
   // Sunlight
-  float sunWorbleAmount = 0.5f;//(float) moonlander.getValue("sunWorbleAmount");
-  float sunWorbleSpeed = 0.5f;//(float) moonlander.getValue("sunWorbleSpeed");
+  float sunWorbleAmount = (float) moonlander.getValue("sun:worbleAmount");
+  float sunWorbleSpeed = (float) moonlander.getValue("sun:worbleSpeed");
   worblePos += deltaTime*sunWorbleSpeed;  
-  directionalLight(255, 200, 50, sin(worblePos)*sunWorbleAmount, -1, cos(worblePos)*sunWorbleAmount);
+  directionalLight(255, 200, 50, sin(worblePos)*sunWorbleAmount, -1, -cos(worblePos)*sunWorbleAmount);
 
   // Skylight
   directionalLight(20, 40, 140, 0,-1,0);

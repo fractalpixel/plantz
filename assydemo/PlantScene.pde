@@ -39,7 +39,6 @@ void setupPlants(){
       sin(a) * r - cos(a) * r,
       h,
       sin(a) * r + cos(a) * r);
-  
   }
 
   for (Plant plant : flowers) {
@@ -49,11 +48,11 @@ void setupPlants(){
 
 
 void drawPlants(float time){
-  //testPlant.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
+  testPlant.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
   testPlant2.context.age = (sin(TURN * time * 0.02) + 1.0) * 0.5;
   //println(testPlant.context.age);
   pushMatrix();
-  //testPlant.drawPlant(); 
+  testPlant.drawPlant(); 
   
   popMatrix();
   testPlant2.drawPlant(); 

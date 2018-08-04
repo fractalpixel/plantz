@@ -8,10 +8,11 @@ class Flower extends PlantPart {
   color branchColor  =color(50,200,60);
   int sideAmount = 12;
   PVector branchEndPos = new PVector(0,0,0);
+  PVector pos = new PVector(0,0,0);
   
-  Flower(PlantPart petal,  PlantPart leaf){
+  Flower(PlantPart petal,  PlantPart leaf, PVector pos){
     this.petal = petal;
-    
+    this.pos = pos;
     
     this.leaf = leaf;
   }  
@@ -20,6 +21,8 @@ class Flower extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
+    pushMatrix();
+    translate(pos.x, pos.y, pos.z);
       //stalk
     pushMatrix();
       rotateX(PI);
@@ -64,6 +67,7 @@ class Flower extends PlantPart {
         rotateZ(PI);
         rotateX((-0.15*PI));
         leaf.drawPart(context,random.nextRandom());
+      popMatrix();
       popMatrix();
   }
   

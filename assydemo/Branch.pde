@@ -31,6 +31,16 @@ class Branch extends PlantPart {
     this.numberOfBranches = max(0, (int)numBranches);
   }  
   
+   Branch(float branchLength, color branchColor, float maxWidth, float minWidth){
+    this.maxBrancHeight = branchLength;
+    this.numberOfBranches = 0;
+    this.branchColor = branchColor;
+    this.branchMaxWidth = branchMaxWidth;
+    this.minWidth = minWidth;
+    float branchChange = branchMaxWidth-minWidth;
+    
+  }  
+  
   void doInit(RandomSequence random) {
   }
   

@@ -118,13 +118,14 @@ void draw() {
   
   float cameraSpeed = (float)moonlander.getValue("camera:speed");
   float cameraDistance = (float)moonlander.getValue("camera:distance");
+  float cameraFocusHeight = (float)moonlander.getValue("camera:focusHeight");
 
   camPos.x = cameraDistance * cos(TURN*time*cameraSpeed);
   camPos.z = cameraDistance * sin(TURN*time*cameraSpeed);
   camPos.y = (float)moonlander.getValue("camera:height");
 
   camera.jump(camPos.x, camPos.y, camPos.z);
-  camera.aim(focusPos.x, focusPos.y, focusPos.z);
+  camera.aim(focusPos.x, focusPos.y + cameraFocusHeight, focusPos.z);
   camera.feed();
   
   // Debug lines
@@ -147,6 +148,14 @@ void draw() {
   // Doom Light
    directionalLight(200, 50, 10, 0.2,0.1,0.1);
 
+  // Update plants
+  treeAge = (float) moonlander.getValue("plants:tree");
+  singleGrassAge = (float) moonlander.getValue("plants:singleGrass");
+  singleFlowerAge = (float) moonlander.getValue("plants:singleFlower");
+
+  float grassPatchAge = (float) moonlander.getValue("plants:grassPatch");
+  float flowerPatchAge = (float) moonlander.getValue("plants:flowerPatch");
+  
   
   fill(255, 255, 255);
 

@@ -13,18 +13,22 @@ class Branch extends PlantPart {
   int brancHeight = 0;
   float branchStep = 1;
   PVector branchEndPos = new PVector(0,0,0);
+  int numberOfBranches = 10;
+
 
   float branchesInGrowDirection = 0.3;
   
   
   Branch(PlantPart tip, PlantPart branch){
-    this(tip, branch, 0.3);
+    this(tip, branch, 0.3f, 20f, 70f);
   }
   
-  Branch(PlantPart tip, PlantPart branch, float branchesInGrowDirection){
+  Branch(PlantPart tip, PlantPart branch, float branchesInGrowDirection, float numBranches, float branchLength){
     this.tip = tip;
     this.branch = branch;
     this.branchesInGrowDirection = branchesInGrowDirection;
+    this.maxBrancHeight = branchLength;
+    this.numberOfBranches = max(0, (int)numBranches);
   }  
   
   void doInit(RandomSequence random) {
@@ -55,7 +59,6 @@ class Branch extends PlantPart {
     float branchingAngle = random.nextFloat(2*PI);
     final float PHI = 2.3999632f;
     
-    int numberOfBranches = 10;
     
     PlantContext branchContext = context.copy();
     

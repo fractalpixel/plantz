@@ -8,7 +8,7 @@ class Apple extends PlantPart {
   }
   
   void drawPart(PlantContext context, RandomSequence random) {
-    if (context.age <= 0.3){
+    if (context.plantAge <= 0){
         drawFlower();  
         
     
@@ -28,7 +28,8 @@ class Apple extends PlantPart {
   }  
   
   void drawFuit(PlantContext context){
-    float s = size * context.age;
+    
+    float s = size*context.age;
     translate(0, -s/2,0);
     fill(lerpColor(youngColor, oldColor, context.age));
     sphereDetail(16);

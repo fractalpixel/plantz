@@ -9,12 +9,15 @@ class Flower extends PlantPart {
   int sideAmount = 12;
   PVector branchEndPos = new PVector(0,0,0);
   PVector pos = new PVector(0,0,0);
+  float flowerRot = 0;
   
   Flower(PlantPart petal,  PlantPart leaf, PVector pos){
     this.petal = petal;
     this.pos = pos;
-    
+    this.petalLenght = 1 + random(1);
+    this.stalkLength = 2.5 + random(1);
     this.leaf = leaf;
+    flowerRot = random(-1, 1);
   }  
   
   void doInit(RandomSequence random) {
@@ -37,7 +40,7 @@ class Flower extends PlantPart {
       scale(petalLenght*pow(context.age,2));
       
       rotateX((0.5*PI));
-      rotateY(0.5);
+      rotateY(0.5+flowerRot);
       
       //float rotateStep = radians(137.508);
       float rotateStep = 2*PI/petalAmount;

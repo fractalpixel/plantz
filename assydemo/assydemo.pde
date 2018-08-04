@@ -12,6 +12,7 @@ import ddf.minim.*;
 float TURN = PI*2;
 
 float worblePos = 0f;
+float cameraPos = 0f;
 
 // These control how big the opened window is.
 // Before you release your demo, set these to 
@@ -120,8 +121,9 @@ void draw() {
   float cameraDistance = (float)moonlander.getValue("camera:distance");
   float cameraFocusHeight = (float)moonlander.getValue("camera:focusHeight");
 
-  camPos.x = cameraDistance * cos(TURN*time*cameraSpeed);
-  camPos.z = cameraDistance * sin(TURN*time*cameraSpeed);
+  cameraPos += deltaTime * cameraSpeed;
+  camPos.x = cameraDistance * cos(TURN*cameraPos);
+  camPos.z = cameraDistance * sin(TURN*cameraPos);
   camPos.y = (float)moonlander.getValue("camera:height");
 
   camera.jump(camPos.x, camPos.y, camPos.z);
@@ -133,12 +135,12 @@ void draw() {
  // stroke(0,255, 0);
  
 // resetShader();
-  //lights();
+  lights();
 
   // Sunlight
   float sunWorbleAmount = (float) moonlander.getValue("sun:worbleAmount");
   float sunWorbleSpeed = (float) moonlander.getValue("sun:worbleSpeed");
-  worblePos += deltaTime*sunWorbleSpeed;  
+  worblePos += deltaTime * constrain(sunWorbleSpeed, 0f, 3f);  
   directionalLight(255, 200, 50, sin(worblePos)*sunWorbleAmount, -1, -cos(worblePos)*sunWorbleAmount);
 
   // Skylight

@@ -46,7 +46,6 @@ void setupPlants(){
       sin(a) * r - cos(a) * r,
       h,
       sin(a) * r + cos(a) * r);
-  
   }
 
   for (Plant plant : flowers) {

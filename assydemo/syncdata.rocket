@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rootElement>
+<tracks rows="10000" startRow="0" endRow="10000" rowsPerBeat="8"
+beatsPerMin="125">
+	<track name="stopNow" folded="0" muteKeyCount="0"
+color="ffb27474" />
+</tracks>
+	</rootElement>

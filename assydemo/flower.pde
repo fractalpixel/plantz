@@ -17,8 +17,7 @@ class Flower extends PlantPart {
       rotateX((0.5*PI));
       rotateY(1);
       float rotateStep = radians(137.508);
-      println(rotateStep);
-       scale(petalLenght);
+      scale(petalLenght);
       for (int i = 0; i < petalAmount; i++){
          
           rotateZ(rotateStep);

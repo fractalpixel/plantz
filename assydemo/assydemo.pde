@@ -16,15 +16,15 @@ float worblePos = 0f;
 // These control how big the opened window is.
 // Before you release your demo, set these to 
 // full HD resolution (1920x1080).
-//int CANVAS_WIDTH = 1920; //480;
-//int CANVAS_HEIGHT = 1080; // 360;
-int CANVAS_WIDTH = 800;
-int CANVAS_HEIGHT = 600;
+int CANVAS_WIDTH = 1920; //480;
+int CANVAS_HEIGHT = 1080; // 360;
+//int CANVAS_WIDTH = 800;
+//int CANVAS_HEIGHT = 600;
 
 int fps = 60;
 
 // For syncing with music etc
-// Moonlander moonlander;
+Moonlander moonlander;
 
 // Camera
 //QueasyCam cam;
@@ -49,7 +49,7 @@ float shakyNoise(float time, float freq, float bass, float discant, float seed) 
 void settings() {
   // Set up the drawing area size and renderer (P2D / P3D).
   size(CANVAS_WIDTH, CANVAS_HEIGHT, P3D);
-//  fullScreen(P3D);
+  fullScreen(P3D);
   randomSeed(8719);
   noiseSeed(2131);
 
@@ -72,7 +72,21 @@ void setup() {
   
   frameRate(fps);
 
-//  moonlander.start();
+
+  // Parameters: 
+  // - PApplet
+  // - soundtrack filename (relative to sketch's folder)
+  // - beats per minute in the song
+  // - how many rows in Rocket correspond to one beat
+  moonlander = Moonlander.initWithSoundtrack(this, "babbys_first_pumpkin_patch.mp3", 222, 8);
+//  moonlander.changeLogLevel(Level.FINEST);
+
+  // Last thing in setup; start Moonlander. This either
+  // connects to Rocket (development mode) or loads data 
+  // from 'syncdata.rocket' (player mode).
+  // Also, in player mode the music playback starts immediately.
+  //moonlander.start("localhost", 9001, "syncfile");
+  moonlander.start();
   
   setupPlants();
 
@@ -89,16 +103,16 @@ void draw() {
 
   
   // Handles communication with Rocket
-  //moonlander.update();
+  moonlander.update();
 
-  int stopNow = 0; //moonlander.getIntValue("stopNow");
+  int stopNow = moonlander.getIntValue("stopNow");
   if (stopNow >= 1) {
     exit();
   }
 
   // Seconds since start
-//  float time = (float) moonlander.getCurrentTime();
-  float time = millis() / 1000.0;
+  float time = (float) moonlander.getCurrentTime();
+//  float time = millis() / 1000.0;
   float deltaTime = 1f / fps; 
 
   
